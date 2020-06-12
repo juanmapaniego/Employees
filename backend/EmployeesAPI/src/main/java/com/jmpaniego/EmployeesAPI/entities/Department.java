@@ -1,18 +1,25 @@
 package com.jmpaniego.EmployeesAPI.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Department {
+public class Department implements Serializable {
   @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   private String name;
+  @JsonIgnore
   @OneToMany(mappedBy = "department")
   private List<Employee> employees = new ArrayList<Employee>();
+
+  public Department(String name) {
+    this.name = name;
+  }
 
   public Long getId() {
     return id;
