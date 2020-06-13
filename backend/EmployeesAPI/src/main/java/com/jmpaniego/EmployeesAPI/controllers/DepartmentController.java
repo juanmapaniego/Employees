@@ -7,6 +7,7 @@ import com.jmpaniego.EmployeesAPI.servicies.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +24,20 @@ public class DepartmentController {
   public ResponseEntity<List<Department>> getAll(){
     return ResponseEntity.ok(
         departmentService.getAll()
+    );
+  }
+
+  @GetMapping(value = "/{id}")
+  public ResponseEntity<Department> getDepartmentById(@PathVariable Long id){
+    return ResponseEntity.ok(
+        departmentService.getDepartmentById(id)
+    );
+  }
+
+  @GetMapping(value = "/{id}/employee")
+  public ResponseEntity<List<Employee>> getEmployeesById(@PathVariable Long id){
+    return ResponseEntity.ok(
+        departmentService.getEmployeesById(id)
     );
   }
 }

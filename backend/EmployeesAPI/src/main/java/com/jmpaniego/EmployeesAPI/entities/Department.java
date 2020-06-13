@@ -21,6 +21,14 @@ public class Department implements Serializable {
     this.name = name;
   }
 
+  public List<Employee> getEmployees() {
+    return employees;
+  }
+
+  public void setEmployees(List<Employee> employees) {
+    this.employees = employees;
+  }
+
   public Long getId() {
     return id;
   }

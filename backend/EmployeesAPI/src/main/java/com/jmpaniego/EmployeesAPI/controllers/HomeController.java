@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
   @GetMapping({"","/"})
   public ResponseEntity<String> home(){
-    //return new ResponseEntity<>("Welcome to EmployeesAPI", HttpStatus.OK);
     return ResponseEntity.ok("Welcome to EmployeesAPI");
   }
 }
