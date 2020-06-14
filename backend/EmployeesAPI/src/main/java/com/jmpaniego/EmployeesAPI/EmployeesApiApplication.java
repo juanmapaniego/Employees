@@ -9,6 +9,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.io.File;
+import java.io.FileInputStream;
+
 @SpringBootApplication
 public class EmployeesApiApplication {
 
@@ -28,6 +31,16 @@ public class EmployeesApiApplication {
 
 			Employee emp1 = new Employee("Mia","Prieto",dep1);
 			Employee emp2 = new Employee("Juan","Paniagua",dep2);
+
+			/* read image */
+			File file = new File("/home/jmpaniego/descarga.png");
+			byte[] bFile = new byte[(int) file.length()];
+			FileInputStream fileInputStream = new FileInputStream(file);
+			fileInputStream.read(bFile);
+			fileInputStream.close();
+			/*      */
+			emp1.setAvatar(bFile);
+			emp2.setAvatar(bFile);
 
 			employeeRepository.save(emp1);
 			employeeRepository.save(emp2);

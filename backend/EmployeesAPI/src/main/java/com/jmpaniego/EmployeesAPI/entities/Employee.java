@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Base64;
 
 @Entity
 public class Employee implements Serializable {
@@ -13,6 +14,8 @@ public class Employee implements Serializable {
   private Long id;
   private String firstName;
   private String lastName;
+  @Lob
+  private byte[] avatar;
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "fk_department")
   private Department department;
@@ -25,6 +28,15 @@ public class Employee implements Serializable {
     this.firstName = firstName;
     this.lastName = lastName;
     this.department = department;
+  }
+
+  public byte[] getAvatar() {
+    //return Base64.getEncoder().encode(avatar);
+    return avatar;
+  }
+
+  public void setAvatar(byte[] avatar) {
+    this.avatar = avatar;
   }
 
   public Long getId() {
