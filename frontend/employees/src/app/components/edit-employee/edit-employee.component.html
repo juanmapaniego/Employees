@@ -1,0 +1,65 @@
+<div class="row">
+  <form [formGroup]="newEmployeeFormGroup" (ngSubmit)="onSubmit()">
+    <fieldset class="form-border">
+      <legend class="form-border">
+        <h3>Employee</h3>
+      </legend>
+      <div formGroupName="employee">
+        <!-- First name -->
+        <div class="row form-group">
+          <div class="col-md-3">
+            <label>First Name:</label>
+          </div>
+          <div class="col-md-9">
+            <input
+              type="text"
+              formControlName="firstName"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <!-- Last name -->
+        <div class="row form-group">
+          <div class="col-md-3">
+            <label>Last Name:</label>
+          </div>
+          <div class="col-md-9">
+            <input
+              type="text"
+              formControlName="lastName"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <!-- Department -->
+        <div class="row form-group">
+          <div class="col-md-3">
+            <label>Department</label>
+          </div>
+          <div class="col-md-9">
+            <select
+              formControlName="department"
+              class="custom-select d-block w-100"
+            >
+              <option value="">Choose option...</option>
+              <option *ngFor="let dep of departments">{{ dep.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Image Upload -->
+        <div class="row form-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" (change)="onFileSelected($event.target.files)" id="customFile">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <!-- Submit button -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+  </form>
+</div>

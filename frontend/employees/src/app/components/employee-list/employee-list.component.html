@@ -1,12 +1,24 @@
 <div class="row">
-  <div class="col-lg-4 col-md-6 mb-4" *ngFor="let emp of employees">
-    <div class="card h-100">
-      <img class="card-img-top img-responsive" [src]="imageBlobUrl" />
-      <div class="card-body">
-        <h5 class="card-title">{{ emp.firstName }} {{ emp.lastName }}</h5>
-      </div>
-      <div class="card-footer text-center">
-        <button class="btn btn-primary">Info</button>
+  <div class="col-md-3">
+    <app-department-category></app-department-category>
+    <br>
+    <a routerLink="create" class="btn btn-primary">New</a>
+  </div>
+  <!-- data -->
+  <div class="col-md-9">
+    <div class="list-group">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let emp of employees">
+          <div class="card h-100">
+            <img class="card-img-top img-responsive" [src]="emp.avatar" />
+            <div class="card-body">
+              <h5 class="card-title">{{ emp.firstName }} {{ emp.lastName }}</h5>
+            </div>
+            <div class="card-footer text-center">
+              <button class="btn btn-primary">Info</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

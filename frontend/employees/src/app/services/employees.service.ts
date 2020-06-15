@@ -8,6 +8,12 @@ import { Employee } from '../common/employee';
   providedIn: 'root'
 })
 export class EmployeesService {
+  
+  create(value: any) {
+    this.httpClient.post(this.baseUrl,value).subscribe(
+      res => console.log(res)
+    );
+  }
 
   private baseUrl = "http://localhost:8080/employee";
 

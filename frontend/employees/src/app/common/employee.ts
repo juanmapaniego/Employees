@@ -2,5 +2,5 @@ export class Employee {
     id: number;
     firstName: string;
     lastName: string;
-    avatar: string;
+    avatar: string;      
 }

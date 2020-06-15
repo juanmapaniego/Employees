@@ -34,4 +34,9 @@ public class DepartmentService {
             () ->new DepartmentNotExistException("Department not exist")
         );
   }
+
+  public Department findByName(String name) {
+    return departmentRepository.findByName(name)
+        .orElseThrow(DepartmentNotExistException::new);
+  }
 }

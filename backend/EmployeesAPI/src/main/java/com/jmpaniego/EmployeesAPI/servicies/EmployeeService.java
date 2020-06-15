@@ -4,8 +4,6 @@ import com.jmpaniego.EmployeesAPI.entities.Employee;
 import com.jmpaniego.EmployeesAPI.exceptions.DepartmentNotExistException;
 import com.jmpaniego.EmployeesAPI.exceptions.EmployeeNotFoundException;
 import com.jmpaniego.EmployeesAPI.repositories.EmployeeRepository;
-import org.hibernate.JDBCException;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;

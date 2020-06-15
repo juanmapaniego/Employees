@@ -1,11 +1,7 @@
 package com.jmpaniego.EmployeesAPI.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Base64;
 
 @Entity
 public class Employee implements Serializable {
@@ -78,6 +74,7 @@ public class Employee implements Serializable {
         ", firstName='" + firstName + '\'' +
         ", lastName='" + lastName + '\'' +
         ", department=" + department +
+        ", avatar=" + avatar +
         '}';
   }
 }

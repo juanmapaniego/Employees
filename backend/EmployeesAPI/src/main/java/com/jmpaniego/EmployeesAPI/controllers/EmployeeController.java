@@ -3,6 +3,7 @@ package com.jmpaniego.EmployeesAPI.controllers;
 import com.jmpaniego.EmployeesAPI.entities.Employee;
 import com.jmpaniego.EmployeesAPI.exceptions.DepartmentNotExistException;
 import com.jmpaniego.EmployeesAPI.exceptions.EmployeeNotFoundException;
+import com.jmpaniego.EmployeesAPI.servicies.DepartmentService;
 import com.jmpaniego.EmployeesAPI.servicies.EmployeeService;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class EmployeeController {
 
   @Autowired
   private EmployeeService employeeService;
+  @Autowired
+  private DepartmentService departmentService;
 
   @GetMapping(value = {"","/"})
   public ResponseEntity<List<Employee>> getAll(){
@@ -39,11 +42,12 @@ public class EmployeeController {
   )
   public @ResponseBody byte[] getAvatarById(@PathVariable Long id){
     byte[] avatar = employeeService.getById(id).getAvatar();
-    return Base64.decodeBase64(avatar);
+    return avatar;
   }
 
   @PostMapping(value = {"","/"})
   public ResponseEntity<Employee> create(@RequestBody Employee employee){
+    employee.setDepartment(departmentService.findByName(employee.getDepartment().getName()));
     return ResponseEntity.ok(employeeService.save(employee));
   }
 
